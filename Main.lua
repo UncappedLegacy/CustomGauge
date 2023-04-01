@@ -60,12 +60,12 @@ Sync.Parent = Holder
 Sync.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Sync.BackgroundTransparency = 1.000
 Sync.BorderSizePixel = 0
-Sync.Position = UDim2.new(0.25, 0, 0.629999995, 0)
-Sync.Size = UDim2.new(0, 200, 0, 24)
+Sync.Position = UDim2.new(0.25, 0, 0.630000055, 0)
+Sync.Size = UDim2.new(0, 200, 0, 51)
 Sync.Font = Enum.Font.GothamMedium
 Sync.Text = "0%"
-Sync.TextColor3 = Color3.fromRGB(202, 202, 202)
-Sync.TextSize = 18.000
+Sync.TextColor3 = Color3.fromRGB(255,255,255)
+Sync.TextSize = 20.000
 
 JHud.Name = "JHud"
 JHud.Parent = Holder
@@ -112,7 +112,7 @@ Sign.TextTransparency = 1.000
 
 -- Scripts:
 
-local function BFHM_fake_script() -- Frame.LocalScript 
+local function XSSQJK_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local UIStroke = Instance.new("UIStroke")
@@ -188,8 +188,28 @@ local function BFHM_fake_script() -- Frame.LocalScript
 		end
 	end
 end
-coroutine.wrap(BFHM_fake_script)()
-local function CRQG_fake_script() -- JHud.LocalScript 
+coroutine.wrap(XSSQJK_fake_script)()
+local function NWWVQMK_fake_script() -- Sync.LocalScript 
+	local script = Instance.new('LocalScript', Sync)
+
+	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.QBox:GetDescendants()) do
+		if v.ClassName == "TextLabel" and v.Text == "Sync" then
+			SyncFrame = v.Parent
+		end
+	end
+	local function Color(R,G,B)
+		script.Parent.TextColor3 = Color3.fromRGB(R,G,B)
+	end
+	
+	SyncFrame.Visible = false
+	while game:GetService("RunService").Heartbeat:Wait() do
+		local Sync = SyncFrame:GetChildren()[2].Text
+		script.Parent.Text = "Sync: " .. Sync
+		
+	end
+end
+coroutine.wrap(NWWVQMK_fake_script)()
+local function HDVHA_fake_script() -- JHud.LocalScript 
 	local script = Instance.new('LocalScript', JHud)
 
 	local function Gain()
@@ -262,4 +282,4 @@ local function CRQG_fake_script() -- JHud.LocalScript
 		end
 	end
 end
-coroutine.wrap(CRQG_fake_script)()
+coroutine.wrap(HDVHA_fake_script)()
