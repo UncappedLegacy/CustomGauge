@@ -14,6 +14,7 @@ local JHud = Instance.new("Frame")
 local SS = Instance.new("TextLabel")
 local Gain = Instance.new("TextLabel")
 local Sign = Instance.new("TextLabel")
+local Record = Instance.new("TextLabel")
 
 --Properties:
 
@@ -112,9 +113,21 @@ Sign.TextColor3 = Color3.fromRGB(0, 0, 0)
 Sign.TextSize = 14.000
 Sign.TextTransparency = 1.000
 
+Record.Name = "Record"
+Record.Parent = Holder
+Record.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Record.BackgroundTransparency = 1.000
+Record.BorderSizePixel = 0
+Record.Position = UDim2.new(0.25, 0, 2.72500014, 0)
+Record.Size = UDim2.new(0, 200, 0, 51)
+Record.Font = Enum.Font.GothamMedium
+Record.Text = "Time:"
+Record.TextColor3 = Color3.fromRGB(255, 255, 255)
+Record.TextSize = 17.000
+
 -- Scripts:
 
-local function HFEJU_fake_script() -- Frame.LocalScript 
+local function BUYY_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local UIStroke = Instance.new("UIStroke")
@@ -194,8 +207,8 @@ local function HFEJU_fake_script() -- Frame.LocalScript
 		end
 	end
 end
-coroutine.wrap(HFEJU_fake_script)()
-local function DLSKD_fake_script() -- Sync.LocalScript 
+coroutine.wrap(BUYY_fake_script)()
+local function YQPQT_fake_script() -- Sync.LocalScript 
 	local script = Instance.new('LocalScript', Sync)
 
 	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.QBox.Frame:GetDescendants()) do
@@ -215,8 +228,8 @@ local function DLSKD_fake_script() -- Sync.LocalScript
 		script.Parent.Text = "Sync: " .. Sync .. "\nSpeed: " .. Speed
 	end
 end
-coroutine.wrap(DLSKD_fake_script)()
-local function PRRREV_fake_script() -- JHud.LocalScript 
+coroutine.wrap(YQPQT_fake_script)()
+local function XMEK_fake_script() -- JHud.LocalScript 
 	local script = Instance.new('LocalScript', JHud)
 
 	local camera = workspace.CurrentCamera
@@ -298,7 +311,6 @@ local function PRRREV_fake_script() -- JHud.LocalScript
 		end
 		end)
 		ShowSync = GFrames/frames
-		print(GFrames .. " " .. frames)
 		ShowSync = math.floor(ShowSync*10000)/100
 		LastJump = Jump
 		t_gain = 0
@@ -324,4 +336,18 @@ local function PRRREV_fake_script() -- JHud.LocalScript
 		end
 	end
 end
-coroutine.wrap(PRRREV_fake_script)()
+coroutine.wrap(XMEK_fake_script)()
+local function WWLLVC_fake_script() -- Record.LocalScript 
+	local script = Instance.new('LocalScript', Record)
+
+	local Time = game.Players.LocalPlayer.PlayerGui.QBox.Frame:GetChildren()[2]:GetChildren()[5]:GetChildren()[2]
+	for i,v in pairs(Time.Parent:GetChildren()) do
+		if v.ClassName == "TextLabel" and v ~= Time then
+			Record = v
+		end
+	end
+	while game:GetService("RunService").Heartbeat:Wait() do
+		script.Parent.Text = Time.Text .. "\n" .. Record.Text
+	end
+end
+coroutine.wrap(WWLLVC_fake_script)()
