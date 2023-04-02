@@ -1,3 +1,8 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
 local ScreenGui = Instance.new("ScreenGui")
 local Holder = Instance.new("Frame")
 local Frame = Instance.new("Frame")
@@ -60,9 +65,9 @@ Sync.BorderSizePixel = 0
 Sync.Position = UDim2.new(0.25, 0, 0.630000055, 0)
 Sync.Size = UDim2.new(0, 200, 0, 51)
 Sync.Font = Enum.Font.GothamMedium
-Sync.Text = "0%"
+Sync.Text = "0% 0 u/s"
 Sync.TextColor3 = Color3.fromRGB(255, 255, 255)
-Sync.TextSize = 23.000
+Sync.TextSize = 20.000
 
 JHud.Name = "JHud"
 JHud.Parent = Holder
@@ -109,7 +114,7 @@ Sign.TextTransparency = 1.000
 
 -- Scripts:
 
-local function KDVNOPT_fake_script() -- Frame.LocalScript 
+local function NBYEPDM_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local UIStroke = Instance.new("UIStroke")
@@ -189,30 +194,34 @@ local function KDVNOPT_fake_script() -- Frame.LocalScript
 		end
 	end
 end
-coroutine.wrap(KDVNOPT_fake_script)()
-local function IHKOS_fake_script() -- Sync.LocalScript 
+coroutine.wrap(NBYEPDM_fake_script)()
+local function EFDXW_fake_script() -- Sync.LocalScript 
 	local script = Instance.new('LocalScript', Sync)
 
-	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.QBox:GetDescendants()) do
+	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.QBox.Frame:GetDescendants()) do
 		if v.ClassName == "TextLabel" and v.Text == "Sync" then
 			SyncFrame = v.Parent
 		end
 	end
+	SpeedFrame = game.Players.LocalPlayer.PlayerGui.QBox.Frame:GetChildren()[2]
 	local function Color(R,G,B)
 		script.Parent.TextColor3 = Color3.fromRGB(R,G,B)
 	end
 	
 	SyncFrame.Visible = false
 	while game:GetService("RunService").Heartbeat:Wait() do
+		local Speed = SpeedFrame:GetChildren()[2].TextLabel.Text
 		local Sync = SyncFrame:GetChildren()[2].Text
-		script.Parent.Text = "Sync: " .. Sync
-		
+		script.Parent.Text = "Sync: " .. Sync .. "\nSpeed: " .. Speed
 	end
 end
-coroutine.wrap(IHKOS_fake_script)()
-local function LBPHU_fake_script() -- JHud.LocalScript 
+coroutine.wrap(EFDXW_fake_script)()
+local function KQYSYN_fake_script() -- JHud.LocalScript 
 	local script = Instance.new('LocalScript', JHud)
 
+	local camera = workspace.CurrentCamera
+	local UserInputService = game:GetService("UserInputService")
+	local lastY = 0
 	local function Gain()
 		local Rot = game:GetService("Players").LocalPlayer.PlayerGui.QBox.Frame.ImageLabel.ImageLabel.Rotation
 		Rot -= 180
@@ -245,9 +254,22 @@ local function LBPHU_fake_script() -- JHud.LocalScript
 	local t_gain = 0
 	local frames = 0
 	local ShowGain = 0
-	
+	local GFrames = 0
+	local ShowSync
+	local LastSpeed = 0
+	local dif = 0
 	while game:GetService("RunService").Heartbeat:wait() do
 		repeat
+			local X, Y, Z = camera.CFrame:ToOrientation()
+			if math.deg(Y) > lastY then
+				if UserInputService:IsKeyDown(Enum.KeyCode.A) == true then
+					GFrames += 1
+				end
+			elseif math.deg(Y) < lastY then
+				if UserInputService:IsKeyDown(Enum.KeyCode.D) == true then
+					GFrames += 1
+				end
+			end
 			local Jump = JHud:GetChildren()[1].Text
 			local Gain = Gain()
 			if Gain > 1 then
@@ -257,6 +279,7 @@ local function LBPHU_fake_script() -- JHud.LocalScript
 			Gain *= 100
 			t_gain += Gain
 			frames += 1
+			lastY = math.deg(Y)
 			game:GetService("RunService").Heartbeat:wait() 
 		until Jump ~= LastJump
 		ShowGain = t_gain/frames
@@ -264,13 +287,27 @@ local function LBPHU_fake_script() -- JHud.LocalScript
 		Strafe = JHud:GetChildren()[4].Text
 		Jump = JHud:GetChildren()[1].Text
 		Speed = JHud:GetChildren()[2].Text
+		pcall(function()
+		local dif = tonumber(Speed) - tonumber(LastSpeed)
+		dif = math.floor(dif*100)/100
+		if dif >= 0 then
+			dif = "+" .. dif
+		end
+		if Jump == 1 then
+			dif = "+0"
+		end
+		end)
+		ShowSync = GFrames/frames
+		print(GFrames .. " " .. frames)
+		ShowSync = math.floor(ShowSync*10000)/100
 		LastJump = Jump
 		t_gain = 0
 		frames = 0
+		GFrames = 0
 		if Jump ~= "#" then
 			ShowGain = math.floor(ShowGain*100)/100
-			script.Parent.SS.Text = Jump .. ": " .. Speed .. " | (" .. Strafe .. ")"
-			script.Parent.Gain.Text = ShowGain .. script.Parent.Sign.Text
+			script.Parent.SS.Text = Jump .. ": " .. Speed .. " (" .. dif .. ")" .. " | (" .. Strafe .. ")"
+			script.Parent.Gain.Text = ShowGain .. script.Parent.Sign.Text .. " | " .. ShowSync
 			if tonumber(ShowGain) >= 80 then
 				Color(0, 242, 255)
 			elseif tonumber(ShowGain) >= 70 then
@@ -281,6 +318,10 @@ local function LBPHU_fake_script() -- JHud.LocalScript
 				Color(255, 61, 61)
 			end
 		end
+		LastSpeed = Speed
+		if tonumber(LastSpeed) == nil then
+			LastSpeed = 0
+		end
 	end
 end
-coroutine.wrap(LBPHU_fake_script)()
+coroutine.wrap(KQYSYN_fake_script)()
