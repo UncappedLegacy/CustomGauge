@@ -24,7 +24,7 @@ Holder.Parent = ScreenGui
 Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Holder.BackgroundTransparency = 1.000
 Holder.BorderSizePixel = 0
-Holder.Position = UDim2.new(0.5, -200, 0.140000001, 0)
+Holder.Position = UDim2.new(0.5, -200, 0.212319195, 0)
 Holder.Size = UDim2.new(0, 400, 0, 200)
 
 Frame.Parent = Holder
@@ -32,8 +32,8 @@ Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Frame.BackgroundTransparency = 1.000
 Frame.BorderSizePixel = 0
 Frame.ClipsDescendants = true
-Frame.Position = UDim2.new(0.5, -125, 0.5, -17)
-Frame.Size = UDim2.new(0, 250, 0, 35)
+Frame.Position = UDim2.new(0.474999994, -125, 0.488000035, -17)
+Frame.Size = UDim2.new(0, 270, 0, 37)
 
 Right.Name = "Right"
 Right.Parent = Frame
@@ -41,6 +41,7 @@ Right.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Right.BorderSizePixel = 0
 Right.Position = UDim2.new(0, 0, -0.128571436, 0)
 Right.Size = UDim2.new(0, 125, 0, 43)
+Right.Visible = false
 
 Left.Name = "Left"
 Left.Parent = Frame
@@ -48,6 +49,7 @@ Left.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Left.BorderSizePixel = 0
 Left.Position = UDim2.new(0.5, 0, -0, 0)
 Left.Size = UDim2.new(0, 125, 0, 43)
+Left.Visible = false
 
 Frame_2.Parent = Holder
 Frame_2.BackgroundColor3 = Color3.fromRGB(155, 155, 155)
@@ -65,7 +67,7 @@ Sync.Size = UDim2.new(0, 200, 0, 51)
 Sync.Font = Enum.Font.GothamMedium
 Sync.Text = "0%"
 Sync.TextColor3 = Color3.fromRGB(255, 255, 255)
-Sync.TextSize = 20.000
+Sync.TextSize = 23.000
 
 JHud.Name = "JHud"
 JHud.Parent = Holder
@@ -83,7 +85,7 @@ SS.Size = UDim2.new(0, 194, 0, 30)
 SS.Font = Enum.Font.GothamBold
 SS.Text = "0: 0 | (0%)"
 SS.TextColor3 = Color3.fromRGB(202, 202, 202)
-SS.TextSize = 27.000
+SS.TextSize = 29.000
 
 Gain.Name = "Gain"
 Gain.Parent = JHud
@@ -95,7 +97,7 @@ Gain.Size = UDim2.new(0, 194, 0, 30)
 Gain.Font = Enum.Font.GothamBold
 Gain.Text = "0%"
 Gain.TextColor3 = Color3.fromRGB(202, 202, 202)
-Gain.TextSize = 27.000
+Gain.TextSize = 29.000
 
 Sign.Name = "Sign"
 Sign.Parent = JHud
@@ -112,7 +114,7 @@ Sign.TextTransparency = 1.000
 
 -- Scripts:
 
-local function NINAEGL_fake_script() -- Frame.LocalScript 
+local function VIDTNQ_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local UIStroke = Instance.new("UIStroke")
@@ -136,17 +138,17 @@ local function NINAEGL_fake_script() -- Frame.LocalScript
 			local change = Gain - 1
 			Gain = 1 - change
 		end
-		local Move = 125 - Gain * 125
-		script.Parent.Right.Size = UDim2.new(0,125*Gain,0,43)
-		script.Parent.Left.Size = UDim2.new(0,125*Gain,0,43)
+		local Move = 135 - Gain * 135
+		script.Parent.Right.Size = UDim2.new(0,135*Gain,0,43)
+		script.Parent.Left.Size = UDim2.new(0,135*Gain,0,43)
 		script.Parent.Left.Position = UDim2.new(0.5,Move,0,0)
 	end
-
+	
 	local function Color(R,G,B)
 		script.Parent.Left.BackgroundColor3 = Color3.fromRGB(R,G,B)
 		script.Parent.Right.BackgroundColor3 = Color3.fromRGB(R,G,B)
 	end
-
+	
 	local function SetColor(Gain)
 		if Gain > 1 then
 			local change = Gain - 1
@@ -192,8 +194,8 @@ local function NINAEGL_fake_script() -- Frame.LocalScript
 		end
 	end
 end
-coroutine.wrap(NINAEGL_fake_script)()
-local function YVIIXC_fake_script() -- Sync.LocalScript 
+coroutine.wrap(VIDTNQ_fake_script)()
+local function OXKCPKX_fake_script() -- Sync.LocalScript 
 	local script = Instance.new('LocalScript', Sync)
 
 	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.QBox:GetDescendants()) do
@@ -204,16 +206,16 @@ local function YVIIXC_fake_script() -- Sync.LocalScript
 	local function Color(R,G,B)
 		script.Parent.TextColor3 = Color3.fromRGB(R,G,B)
 	end
-
+	
 	SyncFrame.Visible = false
 	while game:GetService("RunService").Heartbeat:Wait() do
 		local Sync = SyncFrame:GetChildren()[2].Text
 		script.Parent.Text = "Sync: " .. Sync
-
+		
 	end
 end
-coroutine.wrap(YVIIXC_fake_script)()
-local function ROTS_fake_script() -- JHud.LocalScript 
+coroutine.wrap(OXKCPKX_fake_script)()
+local function VHSG_fake_script() -- JHud.LocalScript 
 	local script = Instance.new('LocalScript', JHud)
 
 	local function Gain()
@@ -225,20 +227,20 @@ local function ROTS_fake_script() -- JHud.LocalScript
 		local Gain = Rot/90
 		return Gain
 	end
-
+	
 	local function Color(R,G,B)
 		script.Parent.SS.TextColor3 = Color3.fromRGB(R,G,B)
 		script.Parent.Gain.TextColor3 = Color3.fromRGB(R,G,B)
 	end
-
+	
 	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.QBox:GetDescendants()) do
-
+	
 		if v.ClassName == "TextLabel" and v.Text == "#" then
-
+	
 			JHud = v.Parent
-
+	
 		end
-
+	
 	end
 	JHud.Visible = false
 	local Strafe = JHud:GetChildren()[4].Text
@@ -248,6 +250,7 @@ local function ROTS_fake_script() -- JHud.LocalScript
 	local t_gain = 0
 	local frames = 0
 	local ShowGain = 0
+	
 	while game:GetService("RunService").Heartbeat:wait() do
 		repeat
 			local Jump = JHud:GetChildren()[1].Text
@@ -262,7 +265,7 @@ local function ROTS_fake_script() -- JHud.LocalScript
 			game:GetService("RunService").Heartbeat:wait() 
 		until Jump ~= LastJump
 		ShowGain = t_gain/frames
-
+	
 		Strafe = JHud:GetChildren()[4].Text
 		Jump = JHud:GetChildren()[1].Text
 		Speed = JHud:GetChildren()[2].Text
@@ -285,4 +288,4 @@ local function ROTS_fake_script() -- JHud.LocalScript
 		end
 	end
 end
-coroutine.wrap(ROTS_fake_script)()
+coroutine.wrap(VHSG_fake_script)()
