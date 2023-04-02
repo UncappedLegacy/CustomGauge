@@ -114,7 +114,7 @@ Sign.TextTransparency = 1.000
 
 -- Scripts:
 
-local function NBYEPDM_fake_script() -- Frame.LocalScript 
+local function HFEJU_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local UIStroke = Instance.new("UIStroke")
@@ -194,8 +194,8 @@ local function NBYEPDM_fake_script() -- Frame.LocalScript
 		end
 	end
 end
-coroutine.wrap(NBYEPDM_fake_script)()
-local function EFDXW_fake_script() -- Sync.LocalScript 
+coroutine.wrap(HFEJU_fake_script)()
+local function DLSKD_fake_script() -- Sync.LocalScript 
 	local script = Instance.new('LocalScript', Sync)
 
 	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.QBox.Frame:GetDescendants()) do
@@ -215,8 +215,8 @@ local function EFDXW_fake_script() -- Sync.LocalScript
 		script.Parent.Text = "Sync: " .. Sync .. "\nSpeed: " .. Speed
 	end
 end
-coroutine.wrap(EFDXW_fake_script)()
-local function KQYSYN_fake_script() -- JHud.LocalScript 
+coroutine.wrap(DLSKD_fake_script)()
+local function PRRREV_fake_script() -- JHud.LocalScript 
 	local script = Instance.new('LocalScript', JHud)
 
 	local camera = workspace.CurrentCamera
@@ -288,7 +288,7 @@ local function KQYSYN_fake_script() -- JHud.LocalScript
 		Jump = JHud:GetChildren()[1].Text
 		Speed = JHud:GetChildren()[2].Text
 		pcall(function()
-		local dif = tonumber(Speed) - tonumber(LastSpeed)
+		dif = tonumber(Speed) - tonumber(LastSpeed)
 		dif = math.floor(dif*100)/100
 		if dif >= 0 then
 			dif = "+" .. dif
@@ -324,4 +324,4 @@ local function KQYSYN_fake_script() -- JHud.LocalScript
 		end
 	end
 end
-coroutine.wrap(KQYSYN_fake_script)()
+coroutine.wrap(PRRREV_fake_script)()
