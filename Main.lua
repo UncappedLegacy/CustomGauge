@@ -1,8 +1,3 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
 local ScreenGui = Instance.new("ScreenGui")
 local Holder = Instance.new("Frame")
 local Frame = Instance.new("Frame")
@@ -114,7 +109,7 @@ Sign.TextTransparency = 1.000
 
 -- Scripts:
 
-local function VIDTNQ_fake_script() -- Frame.LocalScript 
+local function KDVNOPT_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local UIStroke = Instance.new("UIStroke")
@@ -155,11 +150,11 @@ local function VIDTNQ_fake_script() -- Frame.LocalScript
 			Gain = 1 - change
 		end
 		Gain *= 100
-		if Gain >= 85 then
+		if Gain >= 90 then
 			Color(0, 242, 255)
 		elseif Gain >= 75 then
 			Color(69, 255, 122)
-		elseif Gain >= 65 then
+		elseif Gain >= 60 then
 			Color(255, 234, 5)
 		else
 			Color(255, 61, 61)
@@ -194,8 +189,8 @@ local function VIDTNQ_fake_script() -- Frame.LocalScript
 		end
 	end
 end
-coroutine.wrap(VIDTNQ_fake_script)()
-local function OXKCPKX_fake_script() -- Sync.LocalScript 
+coroutine.wrap(KDVNOPT_fake_script)()
+local function IHKOS_fake_script() -- Sync.LocalScript 
 	local script = Instance.new('LocalScript', Sync)
 
 	for i,v in pairs(game.Players.LocalPlayer.PlayerGui.QBox:GetDescendants()) do
@@ -214,8 +209,8 @@ local function OXKCPKX_fake_script() -- Sync.LocalScript
 		
 	end
 end
-coroutine.wrap(OXKCPKX_fake_script)()
-local function VHSG_fake_script() -- JHud.LocalScript 
+coroutine.wrap(IHKOS_fake_script)()
+local function LBPHU_fake_script() -- JHud.LocalScript 
 	local script = Instance.new('LocalScript', JHud)
 
 	local function Gain()
@@ -288,4 +283,4 @@ local function VHSG_fake_script() -- JHud.LocalScript
 		end
 	end
 end
-coroutine.wrap(VHSG_fake_script)()
+coroutine.wrap(LBPHU_fake_script)()
