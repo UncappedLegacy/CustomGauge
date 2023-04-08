@@ -187,7 +187,7 @@ local function DYPZAW_fake_script() -- Bar.LocalScript
 		n += 1
 		local Gain = Gain()
 		t_gain += Gain
-		if n == 2 then
+		if n == 1 then
 			Gain = t_gain / n
 			n = 0
 			t_gain = 0
