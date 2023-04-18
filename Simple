@@ -193,10 +193,10 @@ local function DYPZAW_fake_script() -- Bar.LocalScript
 			t_gain = 0
 			SetSize(Gain)
 			SetColor(Gain)
-			if math.deg(Y) > LastY then
+			if (math.deg(Y) > LastY or UserInputService:IsKeyDown(Enum.KeyCode.A) == true) and UserInputService:IsKeyDown(Enum.KeyCode.D) == false then
 				script.Parent.Left.Visible = true
 				script.Parent.Right.Visible = false
-			elseif math.deg(Y) < LastY then
+			elseif (math.deg(Y) < LastY or UserInputService:IsKeyDown(Enum.KeyCode.D) == true) and UserInputService:IsKeyDown(Enum.KeyCode.A) == false then
 				script.Parent.Left.Visible = false
 				script.Parent.Right.Visible = true
 			else
