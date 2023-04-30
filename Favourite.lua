@@ -318,12 +318,25 @@ local function WTUR_fake_script() -- JHud.LocalScript
 		GFrames = 0
 		if Jump ~= "#" then
 			ShowGain = math.floor(ShowGain*100)/100
-			if ShowDiff == true then
-				script.Parent.SS.Text = Jump .. ": " .. Speed .. " (" .. dif .. ")" .. " | (" .. Strafe .. ")"
+			if Jump == 1 then
+				script.Parent.SS.Text = Jump .. ": " .. Speed
+				if tonumber(Speed) >= 21 then
+					Color(253,255,254)
+				elseif tonumber(ShowGain) >= 18 then
+					Color(0, 242, 255)
+				elseif tonumber(ShowGain) >= 17.5 then
+					Color(69, 255, 122)
+				elseif tonumber(ShowGain) >= 16 then
+					Color(255, 234, 5)
+				else
+					Color(255, 61, 61)
+				end
 			else
 				script.Parent.SS.Text = Jump .. ": " .. Speed .." (" .. Strafe .. ")"
 			end
-			script.Parent.Gain.Text = ShowGain .. script.Parent.Sign.Text .. " | " .. ShowSync
+			if Jump ~= 1 then
+				script.Parent.Gain.Text = ShowGain .. script.Parent.Sign.Text .. " | " .. ShowSync
+			end
 			if tonumber(ShowGain) >= 90 then
 			Color(253,255,254)
 			elseif tonumber(ShowGain) >= 80 then
